@@ -40,3 +40,15 @@ dimensions:
 measures:
   count:
     aggregate_type: count
+
+  profit_sum:
+    sql: ${superstore__orders.profit}
+    aggregate_type: sum
+
+  quantity_sum:
+    sql: ${superstore__orders.quantity}
+    aggregate_type: sum
+
+  sales_sum:
+    sql: ${superstore__orders.sales}
+    aggregate_type: sum
