@@ -1,0 +1,5 @@
+base_view: superstore__orders
+
+joins:
+  superstore__customers: {}
+  superstore__products: {}

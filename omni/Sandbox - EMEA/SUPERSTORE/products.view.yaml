@@ -1,0 +1,22 @@
+# Reference this view as superstore__products
+schema: SUPERSTORE
+table_name: PRODUCTS
+
+dimensions:
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  department:
+    sql: '"DEPARTMENT"'
+
+  category:
+    sql: '"CATEGORY"'
+
+measures:
+  count:
+    aggregate_type: count
