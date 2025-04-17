@@ -52,3 +52,7 @@ measures:
   sales_sum:
     sql: ${superstore__orders.sales}
     aggregate_type: sum
+
+  profit_ratio:
+    sql: ${superstore__orders.profit_sum}/${superstore__orders.sales_sum}
+    label: Profit Ratio
