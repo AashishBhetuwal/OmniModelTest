@@ -55,4 +55,4 @@ measures:
 
   profit_ratio:
     sql: ${superstore__orders.profit_sum}/${superstore__orders.sales_sum}
-    label: Profit Ratio
+    label: Profit Ratio Test
