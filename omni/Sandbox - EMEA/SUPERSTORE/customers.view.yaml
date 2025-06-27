@@ -18,7 +18,7 @@ dimensions:
     sql: '"MARKET"'
     links:
       - url: https://interworks.omniapp.co/dashboards/e28d729b?f--superstore__customers.market={{
-          market }}
+          superstore__customers.market }}
         label: User Lookup Dashboard
 
   country:
