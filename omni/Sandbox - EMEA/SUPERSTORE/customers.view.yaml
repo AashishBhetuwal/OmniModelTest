@@ -17,7 +17,7 @@ dimensions:
   market:
     sql: '"MARKET"'
     links:
-      - url: https://interworks.omniapp.co/dashboards/e28d729b--superstore__customers.market=${superstore__customers.market}
+      - url: https://interworks.omniapp.co/dashboards/e28d729b?f--superstore__customers.market=${superstore__customers.market}
         label: Drill Down
 
   country:
