@@ -17,7 +17,7 @@ dimensions:
   market:
     sql: '"MARKET"'
     links:
-      - url: https://interworks.omniapp.co/dashboards/e28d729b?{{#value}}f--superstore__customers.market=%7B%22values%22%3A%5B%22{{value}}%22%5D%2C%22appliedLabels%22%3A%7B%7D%7D{{/value}}{{^value}}f--superstore__customers.market=%7B%22type%22%3A%22user_attribute%22%2C%22user_attribute_name%22%3A%22market%22%7D{{/value}}
+      - url: https://interworks.omniapp.co/dashboards/e28d729b?{{#superstore__customers.market}}f--superstore__customers.market=%7B%22values%22%3A%5B%22{{superstore__customers.market}}%22%5D%2C%22appliedLabels%22%3A%7B%7D%7D{{/superstore__customers.market}}{{^superstore__customers.market}}f--superstore__customers.market=%7B%22type%22%3A%22user_attribute%22%2C%22user_attribute_name%22%3A%22market%22%7D{{/superstore__customers.market}}
         label: Smart Drill Down
 
   country:
