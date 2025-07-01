@@ -14,17 +14,6 @@ dimensions:
   city:
     sql: '"CITY"'
 
-  markettedts:
-    sql: '"MARKET"'
-    links:
-      - url: |
-          {% if filters.market.value != '' %}
-            https://interworks.omniapp.co/dashboards/e28d729b?f--superstore__customers.market=%7B%22values%22%3A%5B%22{{ filters.market.value }}%22%5D%7D
-          {% else %}
-            https://interworks.omniapp.co/dashboards/e28d729b?f--superstore__customers.market=%7B%22type%22%3A%22user_attribute%22%2C%22user_attribute_name%22%3A%22market%22%7D
-          {% endif %}
-        label: Drill to Market
-
   market:
     sql: '"MARKET"'
     links:
