@@ -18,7 +18,7 @@ dimensions:
     sql: '"MARKET"'
     links:
       - url: https://interworks.omniapp.co/dashboards/e28d729b?{{#filters.superstore__customers.market.has_value}}f--superstore__customers.market=%7B%22values%22%3A%5B%22{{filters.superstore__customers.market.value}}%22%5D%2C%22appliedLabels%22%3A%7B%7D%7D{{/filters.superstore__customers.market.has_value}}{{^filters.superstore__customers.market.has_value}}f--superstore__customers.market=%7B%22type%22%3A%22user_attribute%22%2C%22user_attribute_name%22%3A%22market%22%7D{{/filters.superstore__customers.market.has_value}}
-        label: Drill to Market
+        label: Smart Drill Down
 
   country:
     sql: '"COUNTRY"'
