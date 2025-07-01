@@ -16,9 +16,6 @@ dimensions:
 
   market:
     sql: '"MARKET"'
-    links:
-      - url: https://interworks.omniapp.co/dashboards/e28d729b
-        label: User Lookup Test
 
   country:
     sql: '"COUNTRY"'
