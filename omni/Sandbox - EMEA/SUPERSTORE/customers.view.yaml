@@ -16,6 +16,9 @@ dimensions:
 
   market:
     sql: '"MARKET"'
+    links:
+      - url: https://interworks.omniapp.co/dashboards/e28d729b--superstore__customers.country=${superstore__customers.country}
+        label: Google
 
   country:
     sql: '"COUNTRY"'
