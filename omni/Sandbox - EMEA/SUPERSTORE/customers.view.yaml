@@ -19,8 +19,6 @@ dimensions:
     links:
       - url: https://interworks.omniapp.co/dashboards/e28d729b?f--superstore__customers.market=%7B%22values%22%3A%5B%22${superstore__customers.market}%22%5D%2C%22appliedLabels%22%3A%7B%7D%7D
         label: Drill Down to Selected Market
-      - url: https://interworks.omniapp.co/dashboards/e28d729b?f--superstore__customers.market=%7B%22type%22%3A%22user_attribute%22%2C%22user_attribute_name%22%3A%22market%22%7D
-        label: View My Market (User Attribute)
 
   country:
     sql: '"COUNTRY"'
