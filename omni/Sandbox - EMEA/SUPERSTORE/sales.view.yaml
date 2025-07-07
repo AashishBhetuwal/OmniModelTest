@@ -40,16 +40,3 @@ measures:
   sales_sum:
     sql: ${superstore__sales.sales}
     aggregate_type: sum
-
-filters:
-  timeframe_selector:
-    type: string
-    suggestion_list:
-      - value: Daily
-      - value: Weekly
-      - value: Monthly
-      - value: Quarterly
-      - value: Yearly
-    default_filter:
-      is: Monthly
-    filter_single_select_only: true
