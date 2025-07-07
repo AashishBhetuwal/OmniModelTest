@@ -56,3 +56,9 @@ measures:
   profit_ratio:
     sql: ${superstore__orders.profit_sum}/${superstore__orders.sales_sum}
     label: Profit Ratio Test 2
+
+  monthly_sales_sum:
+    sql: ${superstore__orders.sales}
+    label: Monthly Sum of Sales
+    group_label: Sales Metrics
+    aggregate_type: sum
