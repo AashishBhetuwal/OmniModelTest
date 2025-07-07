@@ -6,7 +6,7 @@ dimensions:
   created_date_dynamic:
     sql: |
       CASE 
-        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Yearly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[year]} 
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Yearly' {{/ superstore__orders.timeframe_selector.filter }} THEN YEAR(TO_DATE(${superstore__orders.order_date})) 
         WHEN {{# superstore__orders.timeframe_selector.filter }} 'Quarterly' {{/ superstore__orders.timeframe_selector.filter }} THEN 
           CASE 
             WHEN MONTH(TO_DATE(${superstore__orders.order_date})) BETWEEN 1 AND 3 THEN 'March'  -- Q1
@@ -14,10 +14,12 @@ dimensions:
             WHEN MONTH(TO_DATE(${superstore__orders.order_date})) BETWEEN 7 AND 9 THEN 'September' -- Q3
             WHEN MONTH(TO_DATE(${superstore__orders.order_date})) BETWEEN 10 AND 12 THEN 'December' -- Q4
           END
-        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[month]}
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN MONTHNAME(TO_DATE(${superstore__orders.order_date}))
       END
     label: Dynamic Date
-    timeframes: [ date ]
+    timeframes:
+      []
+      # <<< -- This is the crucial change
 
   customer_id:
     sql: '"CUSTOMER_ID"'
