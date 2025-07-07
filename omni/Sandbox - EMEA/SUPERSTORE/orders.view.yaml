@@ -7,7 +7,13 @@ dimensions:
     sql: |
       CASE 
         WHEN {{# superstore__orders.timeframe_selector.filter }} 'Yearly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[year]} 
-        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Quarterly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[quarter]} 
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Quarterly' {{/ superstore__orders.timeframe_selector.filter }} THEN 
+          CASE 
+            WHEN MONTH(${ORDER_DATE}) IN (1, 2, 3) THEN 'March'  -- Q1
+            WHEN MONTH(${ORDER_DATE}) IN (4, 5, 6) THEN 'June'   -- Q2
+            WHEN MONTH(${ORDER_DATE}) IN (7, 8, 9) THEN 'September' -- Q3
+            WHEN MONTH(${ORDER_DATE}) IN (10, 11, 12) THEN 'December' -- Q4
+          END
         WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[month]}
       END
     label: Dynamic Date
