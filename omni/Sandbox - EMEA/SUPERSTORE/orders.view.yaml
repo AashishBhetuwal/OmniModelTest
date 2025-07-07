@@ -3,6 +3,16 @@ schema: SUPERSTORE
 table_name: ORDERS
 
 dimensions:
+  created_date_dynamic:
+    sql: |
+      CASE 
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Daily' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[date]} 
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Weekly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[week]} 
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[month]}
+      END
+    label: Dynamic
+    timeframes: [ date ]
+
   customer_id:
     sql: '"CUSTOMER_ID"'
     format: ID
@@ -62,3 +72,11 @@ measures:
     label: Monthly Sum of Sales
     group_label: Sales Metrics
     aggregate_type: sum
+
+filters:
+  timeframe_selector:
+    type: string
+    suggestion_list:
+      - value: Daily
+      - value: Weekly
+      - value: Monthly
