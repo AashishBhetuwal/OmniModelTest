@@ -9,10 +9,10 @@ dimensions:
         WHEN {{# superstore__orders.timeframe_selector.filter }} 'Yearly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[year]} 
         WHEN {{# superstore__orders.timeframe_selector.filter }} 'Quarterly' {{/ superstore__orders.timeframe_selector.filter }} THEN 
           CASE 
-            WHEN MONTH(TO_DATE(${ORDER_DATE})) BETWEEN 1 AND 3 THEN 'March'  -- Q1
-            WHEN MONTH(TO_DATE(${ORDER_DATE})) BETWEEN 4 AND 6 THEN 'June'   -- Q2
-            WHEN MONTH(TO_DATE(${ORDER_DATE})) BETWEEN 7 AND 9 THEN 'September' -- Q3
-            WHEN MONTH(TO_DATE(${ORDER_DATE})) BETWEEN 10 AND 12 THEN 'December' -- Q4
+            WHEN MONTH(TO_DATE(${superstore__orders.order_date})) BETWEEN 1 AND 3 THEN 'March'  -- Q1
+            WHEN MONTH(TO_DATE(${superstore__orders.order_date})) BETWEEN 4 AND 6 THEN 'June'   -- Q2
+            WHEN MONTH(TO_DATE(${superstore__orders.order_date})) BETWEEN 7 AND 9 THEN 'September' -- Q3
+            WHEN MONTH(TO_DATE(${superstore__orders.order_date})) BETWEEN 10 AND 12 THEN 'December' -- Q4
           END
         WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${ORDER_DATE[month]}
       END
