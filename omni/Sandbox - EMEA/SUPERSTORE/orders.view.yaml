@@ -6,15 +6,12 @@ dimensions:
   created_date_dynamic:
     sql: |
       CASE 
-        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Yearly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${superstore__orders.order_date[year]}
-        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Quarterly' {{/ superstore__orders.timeframe_selector.filter }} THEN 
-          CASE 
-            WHEN MONTH(${superstore__orders.order_date}) BETWEEN 1 AND 3 THEN 'March'  -- Q1
-            WHEN MONTH(${superstore__orders.order_date}) BETWEEN 4 AND 6 THEN 'June'   -- Q2
-            WHEN MONTH(${superstore__orders.order_date}) BETWEEN 7 AND 9 THEN 'September' -- Q3
-            WHEN MONTH(${superstore__orders.order_date}) BETWEEN 10 AND 12 THEN 'December' -- Q4
-          END
-        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${superstore__orders.order_date[month]}
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Yearly' {{/ superstore__orders.timeframe_selector.filter }} 
+        THEN DATE_TRUNC('YEAR', ${superstore__orders.order_date})
+      WHEN {{# superstore__orders.timeframe_selector.filter }} 'Quarterly' {{/ superstore__orders.timeframe_selector.filter }} 
+        THEN DATEADD(DAY, -1, DATEADD(QUARTER, 1, DATE_TRUNC('QUARTER', ${superstore__orders.order_date})))
+      WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} 
+        THEN DATE_TRUNC('MONTH', ${superstore__orders.order_date})
       END
     label: Dynamic Date
     timeframes: [ date ]
