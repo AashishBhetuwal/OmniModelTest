@@ -6,7 +6,7 @@ dimensions:
   created_date_dynamic:
     sql: |
       CASE 
-        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Yearly' {{/ superstore__orders.timeframe_selector.filter }} THEN CAST(YEAR(${superstore__orders.order_date}) AS VARCHAR)
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Yearly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${superstore__orders.order_date[year]}
         WHEN {{# superstore__orders.timeframe_selector.filter }} 'Quarterly' {{/ superstore__orders.timeframe_selector.filter }} THEN 
           CASE 
             WHEN MONTH(${superstore__orders.order_date}) BETWEEN 1 AND 3 THEN 'March'  -- Q1
@@ -14,13 +14,10 @@ dimensions:
             WHEN MONTH(${superstore__orders.order_date}) BETWEEN 7 AND 9 THEN 'September' -- Q3
             WHEN MONTH(${superstore__orders.order_date}) BETWEEN 10 AND 12 THEN 'December' -- Q4
           END
-        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN MONTHNAME(${superstore__orders.order_date})
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${superstore__orders.order_date[month]}
       END
     label: Dynamic Date
-    # NO timeframes property at all, OR timeframes: [] is usually fine
-    # If the issue persists with timeframes: [], try removing the line entirely.
-    # But often, omitting it or setting it to [] has the same effect.
-    # The key is to ensure the output type is consistent and handled by Omni.
+    timeframes: [ date ]
 
   customer_id:
     sql: '"CUSTOMER_ID"'
