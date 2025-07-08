@@ -38,3 +38,10 @@ dimensions:
 measures:
   count:
     aggregate_type: count
+
+filters:
+  dynamic_filter_test:
+    type: string
+    suggest_from_field: superstore__customers.market
+    default_filter:
+      is: user_attribute_name
