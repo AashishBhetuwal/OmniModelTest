@@ -24,7 +24,7 @@ dimensions:
     sql: '"COUNTRY"'
     links:
       - url: https://www.google.com/search?q=${superstore__customers.country}
-        label: Google
+        label: Facebook
 
   region:
     sql: '"REGION"'
