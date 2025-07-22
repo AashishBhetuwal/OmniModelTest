@@ -1,6 +1,0 @@
-base_view: superstore__orders
-label: Superstore Orders
-
-joins:
-  superstore__customers: {}
-  superstore__products: {}
