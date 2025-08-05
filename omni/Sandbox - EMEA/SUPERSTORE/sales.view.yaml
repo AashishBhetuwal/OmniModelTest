@@ -36,7 +36,3 @@ dimensions:
 measures:
   count:
     aggregate_type: count
-
-  sales_sum:
-    sql: ${superstore__sales.sales}
-    aggregate_type: sum

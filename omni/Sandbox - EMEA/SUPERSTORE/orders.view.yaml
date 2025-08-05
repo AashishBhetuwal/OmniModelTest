@@ -54,22 +54,6 @@ measures:
   count:
     aggregate_type: count
 
-  profit_sum:
-    sql: ${superstore__orders.profit}
-    aggregate_type: sum
-
-  quantity_sum:
-    sql: ${superstore__orders.quantity}
-    aggregate_type: sum
-
-  sales_sum:
-    sql: ${superstore__orders.sales}
-    aggregate_type: sum
-
-  profit_ratio:
-    sql: ${superstore__orders.profit_sum}/${superstore__orders.sales_sum}
-    label: Profit Ratio Test 2
-
 filters:
   timeframe_selector:
     type: string
