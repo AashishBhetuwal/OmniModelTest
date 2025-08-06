@@ -26,6 +26,7 @@ dimensions:
   order_id:
     sql: '"ORDER_ID"'
     format: ID
+    primary_key: true
 
   order_priority:
     sql: '"ORDER_PRIORITY"'

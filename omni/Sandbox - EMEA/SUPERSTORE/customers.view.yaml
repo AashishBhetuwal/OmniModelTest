@@ -6,7 +6,6 @@ dimensions:
   id:
     sql: '"ID"'
     format: ID
-    primary_key: true
 
   customer:
     sql: '"CUSTOMER"'
