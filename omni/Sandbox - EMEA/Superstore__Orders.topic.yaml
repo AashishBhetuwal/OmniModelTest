@@ -1,0 +1,27 @@
+# this is the superstore__orders topic
+base_view: superstore__orders
+label: Sales Team
+
+joins:
+  superstore__customers: {}
+  superstore__sales:
+    superstore__products: {}
+
+relationships:
+  - join_from_view: superstore__orders
+    join_to_view: superstore__customers
+    join_type: always_left
+    on_sql: ${superstore__orders.customer_id} = ${superstore__customers.id}
+    relationship_type: many_to_one
+
+  - join_from_view: superstore__orders
+    join_to_view: superstore__sales
+    join_type: always_left
+    on_sql: ${superstore__orders.order_id} = ${superstore__sales.order_id}
+    relationship_type: one_to_many
+
+  - join_from_view: superstore__sales
+    join_to_view: superstore__products
+    join_type: always_left
+    on_sql: ${superstore__sales.product_id} = ${superstore__products.id}
+    relationship_type: many_to_one
