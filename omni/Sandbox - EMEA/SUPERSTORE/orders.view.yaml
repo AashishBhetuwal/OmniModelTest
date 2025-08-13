@@ -65,3 +65,15 @@ filters:
     default_filter:
       is: Monthly
     filter_single_select_only: true
+
+#The info below was pulled from your dbt repository and is read-only.
+dbt:
+  name: orders
+  target_schema: SUPERSTORE
+  config:
+    materialized: view
+  code: |-
+    {{ config(materialized='view') }}
+
+    select *
+    from {{ source('superstore', 'ORDERS') }}

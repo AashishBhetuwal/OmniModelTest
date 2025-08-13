@@ -13,3 +13,15 @@ dimensions:
 measures:
   count:
     aggregate_type: count
+
+#The info below was pulled from your dbt repository and is read-only.
+dbt:
+  name: returns
+  target_schema: SUPERSTORE
+  config:
+    materialized: view
+  code: |-
+    {{ config(materialized='view') }}
+
+    select *
+    from {{ source('superstore', 'RETURNS') }}
