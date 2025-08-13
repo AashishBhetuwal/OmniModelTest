@@ -2,6 +2,12 @@
 base_view: superstore__orders
 label: Sales Team
 
+required_access_grants: [ sales_team ]
+access_filters:
+  - field: superstore__customers.market
+    user_attribute: market
+    values_for_unfiltered: [ admin ]
+
 joins:
   superstore__customers: {}
   superstore__sales:
