@@ -1,0 +1,7 @@
+access_grants:
+  can_see_pii:
+    user_attribute: can_see_pii
+    allowed_values: [ "true" ]
+  sales_team:
+    user_attribute: team
+    allowed_values: [ sales ]
