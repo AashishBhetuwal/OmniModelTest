@@ -1,0 +1,5 @@
+# Reference this view as omni_dbt__orders
+measures:
+  profit_sum:
+    sql: ${omni_dbt__orders.profit}
+    aggregate_type: sum
