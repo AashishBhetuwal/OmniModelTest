@@ -10,6 +10,7 @@ dimensions:
 
   customer:
     sql: '"CUSTOMER"'
+    aliases: [ customer_name ]
 
   city:
     sql: '"CITY"'
