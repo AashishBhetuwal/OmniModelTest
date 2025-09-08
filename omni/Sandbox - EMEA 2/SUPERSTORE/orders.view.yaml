@@ -40,7 +40,3 @@ dimensions:
 measures:
   count:
     aggregate_type: count
-
-  profit_sum:
-    sql: ${superstore__orders.profit}
-    aggregate_type: sum
