@@ -16,15 +16,15 @@ dimensions:
 
   market:
     sql: '"MARKET"'
+    links:
+      - url: https://interworks.omniapp.co/dashboards/6202df40?f--superstore__customers.market=%7B%22values%22%3A%5B%22${superstore__customers.market}%22%5D%7D
+        label: Market
 
   country:
     sql: '"COUNTRY"'
 
   region:
     sql: '"REGION"'
-    links:
-      - url: https://interworks.omniapp.co/dashboards/78522f06?f--superstore__customers.region=%7B%22values%22%3A%5B%22${superstore__customers.region}%22%5D%7D
-        label: Market Detail
 
   segment:
     sql: '"SEGMENT"'
