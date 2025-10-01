@@ -1,0 +1,23 @@
+# Reference this view as top_10
+schema: SUPERSTORE
+query:
+  fields:
+    superstore__orders.customer_id: customer_id
+    superstore__customers.customer: customer
+    superstore__orders.sales: sales
+    superstore__orders.order_date: date
+  base_view: superstore__orders
+  limit: 10
+  sorts:
+    - field: superstore__orders.sales
+      desc: true
+
+dimensions:
+  customer_id: {}
+  customer: {}
+  sales: {}
+  date: {}
+
+measures:
+  count:
+    aggregate_type: count
