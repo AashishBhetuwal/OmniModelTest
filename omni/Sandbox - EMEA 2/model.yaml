@@ -1,1 +1,9 @@
-{}
+default_cache_policy: daily_cache_policy
+
+cache_policies:
+  daily_cache_policy:
+    max_cache_age: 24 hours # Must be between 0 seconds and 24 hours
+    filter_suggestions_must_obey_policy: true
+  minutes_cache_policy:
+    max_cache_age: 5 minutes
+    filter_suggestions_must_obey_policy: true
