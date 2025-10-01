@@ -44,3 +44,7 @@ measures:
   sales_sum:
     sql: ${superstore__orders.sales}
     aggregate_type: sum
+
+  discount_sum:
+    sql: ${superstore__orders.discount}
+    aggregate_type: sum
