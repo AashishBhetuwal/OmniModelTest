@@ -1,0 +1,17 @@
+- join_from_view: superstore__orders
+  join_to_view: superstore__customers
+  join_type: always_left
+  on_sql: ${superstore__orders.customer_id} = ${superstore__customers.id}
+  relationship_type: many_to_one
+
+- join_from_view: superstore__orders
+  join_to_view: superstore__products
+  join_type: always_left
+  on_sql: ${superstore__orders.product_id} = ${superstore__products.id}
+  relationship_type: many_to_one
+
+- join_from_view: superstore__orders
+  join_to_view: superstore__returns
+  join_type: always_left
+  on_sql: ${superstore__orders.order_id} = ${superstore__returns.order_id}
+  relationship_type: one_to_one

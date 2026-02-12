@@ -1,0 +1,123 @@
+# Reference this view as superstore__orders
+schema: SUPERSTORE
+table_name: ORDERS
+
+# __omni_extension_placeholder__
+dimensions:
+  high_value_flag:
+    sql: |
+      CASE
+        WHEN ${sales} >= {{filters.superstore__orders.min_sales_threshold.value}} THEN 'High'
+        ELSE 'Standard'
+      END
+
+  order_date_dynamic:
+    sql: |
+      CASE
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Daily' {{/ superstore__orders.timeframe_selector.filter }} THEN ${order_date[date]}
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Weekly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${order_date[week]}
+        WHEN {{# superstore__orders.timeframe_selector.filter }} 'Monthly' {{/ superstore__orders.timeframe_selector.filter }} THEN ${order_date[month]}
+      END
+    label: Dynamic
+    timeframes: [ date ]
+
+  customer_id:
+    sql: '"CUSTOMER_ID"'
+    format: ID
+
+  order_date:
+    sql: '"ORDER_DATE"'
+
+  order_id:
+    sql: '"ORDER_ID"'
+    format: ID
+
+  order_priority:
+    sql: '"ORDER_PRIORITY"'
+
+  row_id:
+    sql: '"ROW_ID"'
+    format: ID
+
+  discount:
+    sql: '"DISCOUNT"'
+
+  profit:
+    sql: '"PROFIT"'
+
+  quantity:
+    sql: '"QUANTITY"'
+
+  sales:
+    sql: '"SALES"'
+
+  product_id:
+    sql: '"PRODUCT_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count
+
+  sales_sum:
+    sql: ${superstore__orders.sales}
+    drill_fields:
+      [
+        superstore__customers.customer,
+        superstore__customers.segment,
+        superstore__customers.country,
+        superstore__customers.state,
+        superstore__orders.order_date,
+        superstore__orders.profit
+      ]
+    drill_queries:
+      Top 10 Orders:
+        fields:
+          [
+            superstore__orders.order_id,
+            superstore__orders.sales,
+            "superstore__orders.order_date[date]"
+          ]
+        base_view: superstore__orders
+        limit: 10
+        sorts:
+          - field: superstore__orders.sales
+            desc: true
+      Customer Details:
+        fields:
+          [
+            superstore__customers.customer,
+            superstore__customers.segment,
+            superstore__customers.country,
+            superstore__customers.state,
+            superstore__orders.order_date,
+            superstore__orders.sales
+          ]
+        base_view: superstore__customers
+        limit: 10
+        sorts:
+          - field: superstore__orders.sales
+            desc: true
+    aggregate_type: sum
+
+filters:
+  min_sales_threshold:
+    type: number
+    default_filter:
+      is: 500
+
+  timeframe_selector:
+    type: string
+    suggestion_list:
+      - value: Daily
+      - value: Weekly
+      - value: Monthly
+    filter_single_select_only: true
+
+default_drill_fields:
+  [
+    superstore__orders.order_id,
+    superstore__customers.customer,
+    superstore__products.name,
+    "superstore__orders.order_date[date]"
+  ]

@@ -1,0 +1,15 @@
+# Reference this view as superstore__returns
+schema: SUPERSTORE
+table_name: RETURNS
+
+dimensions:
+  returns:
+    sql: '"RETURNS"'
+
+  order_id:
+    sql: '"ORDER_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

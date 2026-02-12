@@ -1,0 +1,37 @@
+# Reference this view as superstore__customers
+schema: SUPERSTORE
+table_name: CUSTOMERS
+
+dimensions:
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  customer:
+    sql: '"CUSTOMER"'
+
+  city:
+    sql: '"CITY"'
+
+  market:
+    sql: '"MARKET"'
+    links:
+      - url: https://interworks.omniapp.co/dashboards/6202df40?f--superstore__customers.market=%7B%22values%22%3A%5B%22${superstore__customers.market}%22%5D%7D
+        label: Market
+
+  country:
+    sql: '"COUNTRY"'
+
+  region:
+    sql: '"REGION"'
+
+  segment:
+    sql: '"SEGMENT"'
+
+  state:
+    sql: '"STATE"'
+
+measures:
+  count:
+    aggregate_type: count

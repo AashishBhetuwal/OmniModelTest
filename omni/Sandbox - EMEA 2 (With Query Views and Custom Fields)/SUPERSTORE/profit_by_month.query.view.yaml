@@ -1,0 +1,20 @@
+# Reference this view as profit_by_month
+schema: SUPERSTORE
+query:
+  fields:
+    superstore__orders.order_date[month]: order_month
+    superstore__orders.sales: sales
+    superstore__orders.profit: profit
+  base_view: superstore__orders
+  limit: 5000
+  sorts:
+    - field: superstore__orders.order_date[month]
+
+dimensions:
+  order_month: {}
+  sales: {}
+  profit: {}
+
+measures:
+  count:
+    aggregate_type: count
