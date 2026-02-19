@@ -59,8 +59,22 @@ measures:
   count:
     aggregate_type: count
 
+  profit_sum:
+    sql: ${superstore__orders.profit}
+    drill_fields:
+      [
+        superstore__customers.customer,
+        superstore__customers.segment,
+        superstore__customers.country,
+        superstore__customers.state,
+        superstore__orders.order_date,
+        superstore__orders.sales
+      ]
+    aggregate_type: sum
+
   sales_sum:
-    sql: ${superstore__orders.sales}
+    sql: ${sales}
+    format: CURRENCY
     drill_fields:
       [
         superstore__customers.customer,
@@ -101,11 +115,6 @@ measures:
     aggregate_type: sum
 
 filters:
-  min_sales_threshold:
-    type: number
-    default_filter:
-      is: 500
-
   timeframe_selector:
     type: string
     suggestion_list:
@@ -113,6 +122,11 @@ filters:
       - value: Weekly
       - value: Monthly
     filter_single_select_only: true
+
+  min_sales_threshold:
+    type: number
+    default_filter:
+      is: 500
 
 default_drill_fields:
   [
