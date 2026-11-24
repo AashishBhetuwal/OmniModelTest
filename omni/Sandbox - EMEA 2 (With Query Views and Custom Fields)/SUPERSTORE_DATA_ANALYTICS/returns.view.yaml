@@ -1,0 +1,15 @@
+# Reference this view as superstore_data_analytics__returns
+schema: SUPERSTORE_DATA_ANALYTICS
+table_name: RETURNS
+
+dimensions:
+  returns:
+    sql: '"RETURNS"'
+
+  order_id:
+    sql: '"ORDER_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

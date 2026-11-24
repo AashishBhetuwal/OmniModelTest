@@ -1,0 +1,14 @@
+# Reference this view as superstore_data_analytics__people
+schema: SUPERSTORE_DATA_ANALYTICS
+table_name: PEOPLE
+
+dimensions:
+  person:
+    sql: '"PERSON"'
+
+  territory:
+    sql: '"TERRITORY"'
+
+measures:
+  count:
+    aggregate_type: count
